@@ -43,7 +43,3 @@ A premium luxury car marketplace with an elegant black & gold design. Users can 
 | Slider | Swiper.js 11 |
 | Alerts | SweetAlert2 11 |
 | Storage | LocalStorage + SessionStorage |
-
----
-
-## 📁 Project Structure
