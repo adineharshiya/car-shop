@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxeAuto | Black & Gold Luxury Car Market</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="logo">
+        <i class="fa-solid fa-gem"></i> LuxeAuto
+    </div>
+    <nav>
+        <a href="#" id="homeLink"><i class="fa-solid fa-home"></i> Home</a>
+        <a href="#" id="carsLink"><i class="fa-solid fa-car"></i> Cars</a>
+        <a href="#" id="contactLink"><i class="fa-solid fa-headset"></i> Contact</a>
+        <a href="#" id="profileLink" class="hidden"><i class="fa-solid fa-user"></i> Profile</a>
+        <a href="#" id="adminPanelLink" class="hidden"><i class="fa-solid fa-crown"></i> Admin</a>
+        <a href="#" id="loginLink"><i class="fa-solid fa-key"></i> Login</a>
+        <a href="#" id="cartBtn"><i class="fa-solid fa-cart-shopping"></i> Cart <span id="cartCount">0</span></a>
+    </nav>
+</header>
+
+<!-- HOME SECTION -->
+<section id="homeSection" class="section">
+    <!-- Swiper Slider -->
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="https://images.ctfassets.net/c9t6u0qhbv9e/7wQ0sLw8FuZYFzxtxx1WlK/26fdbd12080ba938bcdde1bbd57a73d7/2025BMWM3PeterNelson11.JPG" alt="BMW M3">
+                <div class="slide-content">
+                    <h2>BMW M3</h2>
+                    <button onclick="showCars()">Shop Now</button>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <img src="https://static0.carbuzzimages.com/wordpress/wp-content/uploads/2024/04/1040877.jpg" alt="Mercedes C63">
+                <div class="slide-content">
+                    <h2>Mercedes C63</h2>
+                    <button onclick="showCars()">Shop Now</button>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <img src="https://static1.topspeedimages.com/wordpress/wp-content/uploads/2023/10/2024-audi-rs7-sportback2.jpg" alt="Audi RS7">
+                <div class="slide-content">
+                    <h2>Audi RS7</h2>
+                    <button onclick="showCars()">Shop Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <!-- Features Boxes -->
+    <div class="features">
+        <div class="feature">
+            <i class="fa-solid fa-car"></i>
+            <h3>100+ Luxury Cars</h3>
+            <p>Wide selection</p>
+        </div>
+        <div class="feature">
+            <i class="fa-solid fa-coins"></i>
+            <h3>Best Price</h3>
+            <p>Guaranteed</p>
+        </div>
+        <div class="feature">
+            <i class="fa-solid fa-wrench"></i>
+            <h3>Free Maintenance</h3>
+            <p>1 year free</p>
+        </div>
+        <div class="feature">
+            <i class="fa-solid fa-headset"></i>
+            <h3>24/7 Support</h3>
+            <p>Always here</p>
+        </div>
+    </div>
+
+    <!-- Stats Boxes -->
+    <div class="stats">
+        <div class="stat">
+            <h2>500+</h2>
+            <p>Happy Customers</p>
+        </div>
+        <div class="stat">
+            <h2>100+</h2>
+            <p>Cars Sold</p>
+        </div>
+        <div class="stat">
+            <h2>24/7</h2>
+            <p>Support</p>
+        </div>
+        <div class="stat">
+            <h2>5⭐</h2>
+            <p>Rating</p>
+        </div>
+    </div>
+</section>
+
+<!-- CARS SECTION -->
+<section id="carsSection" class="section hidden">
+    <div class="filters">
+        <input type="text" id="searchInput" placeholder="🔍 Search by name or brand...">
+        <select id="brandFilter">
+            <option value="all">All Brands</option>
+            <option>BMW</option><option>Mercedes</option><option>Audi</option><option>Tesla</option>
+            <option>Porsche</option><option>Lamborghini</option><option>Ferrari</option><option>Nissan</option>
+        </select>
+        <select id="sortSelect">
+            <option value="default">Sort by</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+        </select>
+    </div>
+    <div id="carsGrid" class="cars-grid"></div>
+</section>
+
+<!-- CAR DETAIL SECTION -->
+<section id="carDetailSection" class="section hidden">
+    <div id="detailContainer"></div>
+    <button id="backToCarsBtn" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Cars</button>
+</section>
+
+<!-- LOGIN SECTION -->
+<section id="loginSection" class="section hidden">
+    <div class="login-container">
+        <div class="login-tabs">
+            <button id="loginTab" class="tab-btn active">Login</button>
+            <button id="registerTab" class="tab-btn">Register</button>
+        </div>
+        <div id="loginFormDiv" class="login-box">
+            <h2><i class="fa-solid fa-key"></i> Welcome Back</h2>
+            <form id="loginForm">
+                <input type="text" id="loginUsername" placeholder="Username" required>
+                <input type="password" id="loginPassword" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+            <div id="loginMessage" class="login-message"></div>
+        </div>
+        <div id="registerFormDiv" class="login-box" style="display:none;">
+            <h2><i class="fa-solid fa-user-plus"></i> Create Account</h2>
+            <form id="registerForm">
+                <input type="text" id="regUsername" placeholder="Username" required>
+                <input type="email" id="regEmail" placeholder="Email" required>
+                <input type="password" id="regPassword" placeholder="Password" required>
+                <input type="password" id="regConfirmPassword" placeholder="Confirm Password" required>
+                <button type="submit">Register</button>
+            </form>
+            <div id="registerMessage" class="login-message"></div>
+        </div>
+    </div>
+</section>
+
+<!-- PROFILE SECTION -->
+<section id="profileSection" class="section hidden">
+    <div class="profile-container">
+        <div class="profile-card">
+            <h2><i class="fa-regular fa-user"></i> My Profile</h2>
+            <div id="profileView">
+                <div class="profile-info">
+                    <p><strong>Username:</strong> <span id="profileUsername"></span></p>
+                    <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+                    <p><strong>Member since:</strong> <span id="profileJoined"></span></p>
+                    <p><strong>Total spent:</strong> $<span id="profileTotalSpent">0</span></p>
+                    <p><strong>Orders:</strong> <span id="profileOrdersCount">0</span></p>
+                </div>
+                <div class="profile-actions">
+                    <button id="editProfileBtn"><i class="fa-regular fa-pen-to-square"></i> Edit</button>
+                    <button id="profileLogoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+                    <button id="closeProfileBtn">Close</button>
+                </div>
+            </div>
+            <div id="profileEdit" class="hidden">
+                <p><strong>Username:</strong> <span id="editUsername"></span> (cannot change)</p>
+                <input type="email" id="editEmail" placeholder="Email">
+                <input type="password" id="editPassword" placeholder="New Password">
+                <input type="password" id="editConfirmPassword" placeholder="Confirm Password">
+                <div class="profile-actions">
+                    <button id="saveProfileBtn">Save</button>
+                    <button id="cancelEditBtn">Cancel</button>
+                </div>
+                <div id="editMessage"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ORDERS SECTION -->
+<section id="ordersSection" class="section hidden">
+    <div class="orders-container">
+        <div class="orders-header">
+            <h2><i class="fa-regular fa-clock"></i> Order History</h2>
+            <button id="closeOrdersBtn">Close</button>
+        </div>
+        <div id="ordersList" class="orders-list"></div>
+    </div>
+</section>
+
+<!-- ADMIN PANEL SECTION -->
+<!-- ADMIN PANEL SECTION (بدون Pending Reviews و Messages) -->
+<section id="adminPanelSection" class="section hidden">
+    <div class="admin-container">
+        <div class="admin-header">
+            <h2><i class="fa-solid fa-crown"></i> Admin Panel</h2>
+            <button id="adminRefreshBtn"><i class="fa-solid fa-rotate"></i> Refresh</button>
+        </div>
+        <div class="admin-tabs">
+            <button class="admin-tab-btn active" data-tab="dashboard"><i class="fa-solid fa-chart-line"></i> Dashboard</button>
+            <button class="admin-tab-btn" data-tab="products"><i class="fa-solid fa-car"></i> Manage Cars</button>
+        </div>
+        <div id="adminDashboard" class="admin-tab-content">
+            <h3>Sales Statistics</h3>
+            <div class="stats-cards">
+                <div class="stat-card"><h4>Today</h4><p id="todaySales">$0</p><small id="todayCount">0 sold</small></div>
+                <div class="stat-card"><h4>Week</h4><p id="weekSales">$0</p><small id="weekCount">0 sold</small></div>
+                <div class="stat-card"><h4>Month</h4><p id="monthSales">$0</p><small id="monthCount">0 sold</small></div>
+                <div class="stat-card"><h4>Total</h4><p id="totalSales">$0</p><small id="totalCount">0 sold</small></div>
+            </div>
+            <h3>Best Selling Cars</h3>
+            <div id="bestSellersList" class="best-sellers-list"></div>
+        </div>
+        <div id="adminProducts" class="admin-tab-content hidden">
+            <div class="admin-form">
+                <h3>Add New Car</h3>
+                <input type="text" id="adminCarName" placeholder="Car Name">
+                <select id="adminCarBrand"><option>BMW</option><option>Mercedes</option><option>Audi</option><option>Tesla</option><option>Porsche</option><option>Lamborghini</option><option>Ferrari</option><option>Nissan</option></select>
+                <input type="number" id="adminCarYear" placeholder="Year">
+                <input type="number" id="adminCarPrice" placeholder="Price (USD)">
+                <input type="text" id="adminCarImg" placeholder="Image URL">
+                <button id="adminAddCarBtn">➕ Add Car</button>
+            </div>
+            <h3>Existing Cars</h3>
+            <div id="adminCarsList" class="admin-cars-list"></div>
+        </div>
+        <button id="closeAdminPanelBtn" class="close-admin-btn">Close Admin Panel</button>
+    </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<!-- CONTACT SECTION -->
+<section id="contactSection" class="section hidden">
+    <div class="contact-hero">
+        <h1><i class="fa-solid fa-headset"></i> Contact Us</h1>
+        <p>We're here 24/7</p>
+    </div>
+    <div class="contact-container">
+        <div class="contact-info">
+            <div class="info-card"><i class="fa-solid fa-location-dot"></i><h3>Visit Us</h3><p>Dubai, Sheikh Zayed Road</p></div>
+            <div class="info-card"><i class="fa-solid fa-phone"></i><h3>Call Us</h3><p>+971 50 123 4567</p></div>
+            <div class="info-card"><i class="fa-solid fa-envelope"></i><h3>Email</h3><p>info@luxeauto.com</p></div>
+            <div class="info-card"><i class="fa-regular fa-clock"></i><h3>Hours</h3><p>Mon-Fri: 9AM - 8PM</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- CART MODAL -->
+<div id="cartModal" class="cart-modal">
+    <div class="cart-content">
+        <span class="close">&times;</span>
+        <h2><i class="fa-solid fa-cart-shopping"></i> Your Cart</h2>
+        <div id="cartItems" class="cart-items"></div>
+        <div class="cart-total">Total: $<span id="cartTotal">0</span></div>
+        <button id="checkoutBtn"><i class="fa-regular fa-credit-card"></i> Checkout</button>
+    </div>
+</div>
+
+<footer>
+    <p>© 2025 LuxeAuto | Black & Gold Collection | <i class="fa-solid fa-gem"></i> Luxury Redefined</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

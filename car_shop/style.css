@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+body { background: #0a0a0a; color: #e0e0e0; }
+header { background: #000; border-bottom: 2px solid #d4af37; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; flex-wrap: wrap; position: sticky; top: 0; z-index: 1000; }
+.logo { font-size: 1.8rem; font-weight: 800; background: linear-gradient(135deg, #d4af37, #ffd966); -webkit-background-clip: text; background-clip: text; color: transparent; }
+nav { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+nav a { color: #f0f0f0; text-decoration: none; font-weight: 500; cursor: pointer; transition: 0.2s; }
+nav a:hover { color: #d4af37; }
+#cartBtn { background: #1a1a1a; border: 1px solid #d4af37; padding: 0.5rem 1rem; border-radius: 40px; display: flex; gap: 0.5rem; align-items: center; }
+#cartBtn:hover { background: #d4af37; color: #000; }
+.hidden { display: none !important; }
+.section { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+.swiper { border-radius: 20px; overflow: hidden; margin-bottom: 3rem; border: 1px solid rgba(212, 175, 55, 0.3); }
+.swiper-slide { position: relative; }
+.swiper-slide img { width: 100%; height: 500px; object-fit: cover; }
+.slide-content { position: absolute; bottom: 15%; left: 5%; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px); padding: 1.5rem 2rem; border-radius: 20px; border-left: 4px solid #d4af37; }
+.slide-content h2 { font-size: 2.5rem; color: #d4af37; }
+.slide-content button { margin-top: 1rem; background: #d4af37; border: none; padding: 0.7rem 1.5rem; border-radius: 40px; font-weight: bold; cursor: pointer; color: #000; }
+.slide-content button:hover { background: #ffd966; }
+.features, .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 3rem; }
+.feature, .stat { background: #111; padding: 1.8rem; text-align: center; border-radius: 20px; border: 1px solid #2a2a2a; transition: 0.3s; }
+.feature:hover, .stat:hover { border-color: #d4af37; transform: translateY(-5px); }
+.feature i, .stat h2 { font-size: 2.5rem; color: #d4af37; margin-bottom: 0.5rem; }
+.filters { display: flex; gap: 1rem; flex-wrap: wrap; background: #111; padding: 1rem; border-radius: 60px; margin-bottom: 2rem; }
+.filters input, .filters select { background: #1a1a1a; border: 1px solid #333; padding: 0.7rem 1.2rem; border-radius: 40px; color: white; outline: none; }
+.filters input:focus, .filters select:focus { border-color: #d4af37; }
+.cars-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+.car-card { background: #111; border-radius: 20px; overflow: hidden; border: 1px solid #2a2a2a; cursor: pointer; transition: 0.3s; }
+.car-card:hover { transform: translateY(-5px); border-color: #d4af37; }
+.car-card img { width: 100%; height: 200px; object-fit: cover; }
+.car-info { padding: 1rem; }
+.car-info h3 { color: #d4af37; font-size: 1.3rem; }
+.price { font-size: 1.5rem; font-weight: bold; margin: 0.5rem 0; }
+.add-to-cart { width: 100%; background: #1a1a1a; border: 1px solid #d4af37; color: #d4af37; padding: 0.5rem; border-radius: 40px; cursor: pointer; font-weight: bold; }
+.add-to-cart:hover { background: #d4af37; color: #000; }
+
+/* لاگین و ریجستر */
+.login-container { max-width: 450px; margin: 2rem auto; background: #111; border: 1px solid #d4af37; border-radius: 28px; padding: 2rem; }
+.login-tabs { display: flex; gap: 1rem; border-bottom: 1px solid #333; padding-bottom: 1rem; margin-bottom: 1.5rem; }
+.tab-btn { background: none; border: none; color: #888; font-size: 1.2rem; font-weight: bold; padding: 0.5rem 1rem; cursor: pointer; }
+.tab-btn.active { color: #d4af37; border-bottom: 2px solid #d4af37; }
+.login-box { display: block; }
+#loginFormDiv { display: block; }
+#registerFormDiv { display: none; }
+.login-box h2 { text-align: center; color: #d4af37; margin-bottom: 1.5rem; }
+.login-box input { width: 100%; background: #1a1a1a; border: 1px solid #333; padding: 0.8rem; border-radius: 40px; margin-bottom: 1rem; color: white; }
+.login-box input:focus { border-color: #d4af37; outline: none; }
+.login-box button { width: 100%; background: #d4af37; color: #000; border: none; padding: 0.8rem; border-radius: 40px; font-weight: bold; cursor: pointer; }
+.login-box button:hover { background: #ffd966; }
+
+.profile-container { max-width: 550px; margin: 0 auto; }
+.profile-card { background: #111; border: 1px solid #d4af37; border-radius: 28px; padding: 2rem; }
+.profile-card h2 { color: #d4af37; text-align: center; margin-bottom: 1.5rem; }
+.profile-info p { padding: 0.5rem 0; border-bottom: 1px solid #333; }
+.profile-actions { display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; }
+.profile-actions button, .back-btn, .close-admin-btn { background: #1a1a1a; border: 1px solid #d4af37; color: #d4af37; padding: 0.5rem 1rem; border-radius: 40px; cursor: pointer; font-weight: bold; }
+.profile-actions button:hover, .back-btn:hover, .close-admin-btn:hover { background: #d4af37; color: #000; }
+.admin-container { background: #0a0a0a; border: 1px solid #d4af37; border-radius: 24px; padding: 1.5rem; }
+.admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; }
+.admin-header h2 { color: #d4af37; }
+.admin-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; border-bottom: 1px solid #333; padding-bottom: 1rem; margin-bottom: 1rem; }
+.admin-tab-btn { background: #1a1a1a; border: none; padding: 0.5rem 1rem; border-radius: 40px; color: #e0e0e0; cursor: pointer; }
+.admin-tab-btn.active { background: #d4af37; color: #000; }
+.stats-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 1rem 0; }
+.stat-card { background: #1a1a1a; padding: 1rem; border-radius: 16px; text-align: center; }
+.stat-card h4 { color: #d4af37; }
+.admin-form input, .admin-form select { width: 100%; background: #1a1a1a; border: 1px solid #333; padding: 0.5rem; border-radius: 12px; margin-bottom: 0.5rem; color: white; }
+.cart-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); justify-content: center; align-items: center; z-index: 2000; }
+.cart-content { background: #111; border: 1px solid #d4af37; border-radius: 24px; width: 90%; max-width: 500px; padding: 1.5rem; position: relative; }
+.cart-content .close { position: absolute; right: 1rem; top: 0.5rem; font-size: 2rem; cursor: pointer; color: #d4af37; }
+.cart-total { text-align: right; font-size: 1.3rem; font-weight: bold; border-top: 1px solid #333; padding-top: 1rem; margin: 1rem 0; color: #d4af37; }
+#checkoutBtn { width: 100%; background: #d4af37; color: #000; border: none; padding: 0.8rem; border-radius: 40px; font-weight: bold; cursor: pointer; }
+.contact-info { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 2rem; }
+.info-card { background: #111; padding: 1.5rem; text-align: center; border-radius: 20px; border: 1px solid #2a2a2a; transition: 0.3s; cursor: pointer; }
+.info-card:hover { transform: translateY(-8px); border-color: #d4af37; box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2); }
+.info-card i { font-size: 2rem; color: #d4af37; transition: 0.3s; }
+.info-card:hover i { transform: scale(1.1); color: #ffd966; }
+.info-card:hover h3 { color: #d4af37; }
+footer { text-align: center; padding: 1.5rem; border-top: 1px solid #d4af37; color: #888; margin-top: 2rem; }
+
+@media (max-width: 768px) { .features, .stats, .stats-cards, .contact-info { grid-template-columns: repeat(2, 1fr); } .cars-grid { grid-template-columns: repeat(2, 1fr); } .swiper-slide img { height: 300px; } .slide-content h2 { font-size: 1.3rem; } .admin-header { flex-direction: column; gap: 0.5rem; text-align: center; } }
+@media (max-width: 480px) { .cars-grid { grid-template-columns: repeat(2, 1fr); gap: 0.7rem; } .car-card img { height: 100px; } .car-info h3 { font-size: 0.8rem; } .price { font-size: 0.85rem; } .add-to-cart { font-size: 0.6rem; padding: 0.25rem; } .feature, .stat { padding: 0.8rem; } .feature i, .stat h2 { font-size: 1.3rem; } .feature h3 { font-size: 0.8rem; } }
